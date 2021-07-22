@@ -1,0 +1,1 @@
+/usr/bin/cc -g  -rdynamic CMakeFiles/temp.dir/RaptorQ.c.o CMakeFiles/temp.dir/temp.c.o  -o temp   -L/home/ward/raptorQ  -Wl,-rpath,/home/ward/raptorQ -Wl,-Bstatic -lnanorq -Wl,-Bdynamic 
