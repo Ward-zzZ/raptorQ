@@ -23,17 +23,44 @@
 
 int main()
 {
-  nanorq *rq [2];
-  struct ioctx *myio_in ;
-  RQ_encode_init(&rq[1], &myio_in, 2, 1, true);
-  symvec packets;
-  kv_init(packets);
-  RQ_receive(rq[1], myio_in, 80, 0, &packets);
-  int viINFObits[100]={0};
-  RQ_pushTB(viINFObits, rq[1], &packets);
-  for(int i =0;i<100;i++)
+  uint8_t *Senderbuff = malloc(sizeof(uint8_t) * 200);
+  memset(Senderbuff, 0, sizeof(uint8_t) * 200);
+
+  unsigned long Maxblocksize = 100;
+
+  int MaxTBs = 100; //一次最多传100bits
+  int *viINFObits = malloc(sizeof(int) * 200);
+  memset(viINFObits, 0, sizeof(int) * 200);
+
+  int viTB[2] = {100, 50};
+  int *viTBs = viTB;
+
+
+
+
+  struct OTI_python oti_python[2];
+  struct OTI_python *oti = oti_python;
+
+  for (int i = 0; i < 2; i++)
   {
-    fprintf(stderr, " %d:%d\n", i,viINFObits[i]);
+    oti_python[i].Endflag = true;
+    oti_python[i].overhead = 1.5;
+    oti_python[i].totalTrans = 0;
   }
+
+  size_t num_packets = 2;
+  size_t packet_size = 2;
+  int iSendrN = 2;
+
+  RQ_encodeControl(Senderbuff,
+                   viINFObits, viTBs, oti_python,
+                   Maxblocksize, num_packets, packet_size, MaxTBs, iSendrN);
+
+  memset(viINFObits, 0, sizeof(int) * 200);
+
+  RQ_encodeControl(Senderbuff,
+                   viINFObits, viTBs, oti_python,
+                   Maxblocksize, num_packets, packet_size, MaxTBs, iSendrN);
+                   
   return 0;
 }

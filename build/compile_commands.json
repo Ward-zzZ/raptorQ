@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/ward/raptorQ/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9  -I/home/ward/raptorQ  -g   -o CMakeFiles/temp.dir/RaptorQ.c.o   -c /home/ward/raptorQ/RaptorQ.c",
+  "file": "/home/ward/raptorQ/RaptorQ.c"
+},
+{
+  "directory": "/home/ward/raptorQ/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9  -I/home/ward/raptorQ  -g   -o CMakeFiles/temp.dir/temp.c.o   -c /home/ward/raptorQ/temp.c",
+  "file": "/home/ward/raptorQ/temp.c"
+}
+]

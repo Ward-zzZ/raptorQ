@@ -100,6 +100,10 @@
 			{
 				"fragment" : "-Wl,-Bdynamic",
 				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lm",
+				"role" : "libraries"
 			}
 		],
 		"language" : "C"

@@ -32,4 +32,4 @@ set(CMAKE_CXX_FLAGS "-Wall")
 
 # 目标链接库, opencv使用, 表示当前目标文件需要链接库：${OpenCV_LIBS}
 
-target_link_libraries(${PROJECT_NAME} libnanorq.a)
+target_link_libraries(${PROJECT_NAME} libnanorq.a m)
