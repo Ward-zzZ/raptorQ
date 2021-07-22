@@ -60,28 +60,28 @@ include CMakeFiles/temp.dir/flags.make
 CMakeFiles/temp.dir/RaptorQ.c.o: CMakeFiles/temp.dir/flags.make
 CMakeFiles/temp.dir/RaptorQ.c.o: ../RaptorQ.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ward/raptorQ/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/temp.dir/RaptorQ.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/temp.dir/RaptorQ.c.o   -c /home/ward/raptorQ/RaptorQ.c
+	/bin/x86_64-linux-gnu-gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/temp.dir/RaptorQ.c.o   -c /home/ward/raptorQ/RaptorQ.c
 
 CMakeFiles/temp.dir/RaptorQ.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/temp.dir/RaptorQ.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ward/raptorQ/RaptorQ.c > CMakeFiles/temp.dir/RaptorQ.c.i
+	/bin/x86_64-linux-gnu-gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ward/raptorQ/RaptorQ.c > CMakeFiles/temp.dir/RaptorQ.c.i
 
 CMakeFiles/temp.dir/RaptorQ.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/temp.dir/RaptorQ.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ward/raptorQ/RaptorQ.c -o CMakeFiles/temp.dir/RaptorQ.c.s
+	/bin/x86_64-linux-gnu-gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ward/raptorQ/RaptorQ.c -o CMakeFiles/temp.dir/RaptorQ.c.s
 
 CMakeFiles/temp.dir/temp.c.o: CMakeFiles/temp.dir/flags.make
 CMakeFiles/temp.dir/temp.c.o: ../temp.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ward/raptorQ/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/temp.dir/temp.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/temp.dir/temp.c.o   -c /home/ward/raptorQ/temp.c
+	/bin/x86_64-linux-gnu-gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/temp.dir/temp.c.o   -c /home/ward/raptorQ/temp.c
 
 CMakeFiles/temp.dir/temp.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/temp.dir/temp.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ward/raptorQ/temp.c > CMakeFiles/temp.dir/temp.c.i
+	/bin/x86_64-linux-gnu-gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ward/raptorQ/temp.c > CMakeFiles/temp.dir/temp.c.i
 
 CMakeFiles/temp.dir/temp.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/temp.dir/temp.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ward/raptorQ/temp.c -o CMakeFiles/temp.dir/temp.c.s
+	/bin/x86_64-linux-gnu-gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ward/raptorQ/temp.c -o CMakeFiles/temp.dir/temp.c.s
 
 # Object files for target temp
 temp_OBJECTS = \
