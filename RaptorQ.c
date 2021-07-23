@@ -361,6 +361,11 @@ void RQ_encodePush(int *viINFObits, uint8_t *Senderbuff, int packet_size, int Ne
   int sum = 0;
   int symbol_Bits = packet_size * 8 + 32; //发送的一个symbol+Payload id的总bit数
   int symbol_num = (NetTBS) / (symbol_Bits);
+  if (symbol_num == 0)
+  {
+    fprintf(stderr, "TBs<symbol_Bits\n");
+    exit(1);
+  }
   int total_symbolNum = (int)(oti->overhead * oti->srcsymNum);
   int startesi = oti->totalTrans;
   if ((symbol_num + startesi) > total_symbolNum)
@@ -395,8 +400,8 @@ void RQ_encodeControl(uint8_t *Senderbuff,
   for (int i = 0; i < iSendrN; i++)
   {
 
-    Senderbuff += i*Maxblocksize;
-    viINFObits += i*MaxTBs;
+    Senderbuff += i * Maxblocksize;
+    viINFObits += i * MaxTBs;
     viTBs += i;
     oti_python += i;
 
@@ -406,7 +411,7 @@ void RQ_encodeControl(uint8_t *Senderbuff,
       nanorq *rq;
       struct ioctx *myio_in;
       oti_python->totalTrans = 0;
-      oti_python->srcsymNum=(size_t)num_packets;
+      oti_python->srcsymNum = (size_t)num_packets;
       uint8_t *srcData = RQ_encode_init(&rq, &myio_in, num_packets, packet_size, true);
       symvec packets;
       kv_init(packets);
@@ -432,7 +437,6 @@ void RQ_encodeControl(uint8_t *Senderbuff,
     {
       RQ_encodePush(viINFObits, Senderbuff, packet_size, *viTBs, oti_python); //更新当前block已经发送的symbol num
     }
-
   }
 }
 
@@ -470,9 +474,9 @@ void RQ_decodePush(int *viINFObits, uint8_t *Receiverbuff, int *viCRCs_pool, str
         oneBolockbuff += (*totalRecvr) * (packet_size + 4);
         int byteindex = 7;
         uint8_t bytedata = 0;
-        for (int i = 0; i < symbol_num * symbol_Bits; i++)
+        for (int m = 0; m < symbol_num * symbol_Bits; m++)
         {
-          bytedata += (uint8_t)pow(2.0, *viINFObits * byteindex);
+          bytedata += (uint8_t)pow(2.0, byteindex) * (*(viINFObits + m));
           byteindex--;
           if (byteindex == -1)
           {
@@ -501,11 +505,13 @@ uint64_t RQ_decodeControl(uint8_t *Receiverbuff, struct OTI_python *oti,
                           int *totalRecvr, int iRecvrM, int iSendrN, int Maxblocksize)
 {
   uint64_t SumOKBITS = 0;
-  uint8_t *viCRCblock = malloc(sizeof(int) * iSendrN); //每个发送block的CRC
+  uint8_t *viCRCblock = malloc(sizeof(uint8_t) * iSendrN); //每个发送block的CRC
+  uint8_t *free_point = viCRCblock;
   memset(viCRCblock, 1, iSendrN);
   for (int i = 0; i < iSendrN; i++)
   {
-
+    oti += i;
+    viCRCblock += i;
     if (oti->Endflag)
     {
       for (int j = 0; j < iRecvrM; j++)
@@ -523,7 +529,7 @@ uint64_t RQ_decodeControl(uint8_t *Receiverbuff, struct OTI_python *oti,
           *viCRCblock = ((*viCRCblock) <= (temp) ? (*viCRCblock) : (temp));
         }
         *totalRecvr = 0;
-        memset(oneBolockbuff, 0, Maxblocksize);
+        // memset(oneBolockbuff, 0, Maxblocksize);
       }
       SumOKBITS += (*viCRCblock) * oti->packet_size * oti->srcsymNum * 8;
     }
@@ -531,10 +537,8 @@ uint64_t RQ_decodeControl(uint8_t *Receiverbuff, struct OTI_python *oti,
     {
       continue;
     }
-    oti++;
-    viCRCblock++;
   }
-  free(viCRCblock);
+  free(free_point);
   return SumOKBITS;
 }
 
@@ -553,6 +557,7 @@ void RQ_buffTosymvec(uint8_t *Receiverbuff, struct OTI_python *oti, symvec *pack
     for (int m = 0; m < packet_size; m++)
     {
       *data = *Receiverbuff;
+      *Receiverbuff = 0;
       data++;
       Receiverbuff++;
     }

@@ -23,20 +23,31 @@
 
 int main()
 {
-  uint8_t *Senderbuff = malloc(sizeof(uint8_t) * 200);
-  memset(Senderbuff, 0, sizeof(uint8_t) * 200);
 
-  unsigned long Maxblocksize = 100;
+  size_t num_packets = 2;
+  size_t packet_size = 2;
+  int iSendrN = 2;
+  int iRecvrM = 1;
+  unsigned long Maxblocksize = 10000;
+  int MaxTBs = 75400; //一次最多传bits
 
-  int MaxTBs = 100; //一次最多传100bits
-  int *viINFObits = malloc(sizeof(int) * 200);
-  memset(viINFObits, 0, sizeof(int) * 200);
+  uint8_t *Senderbuff = malloc(sizeof(uint8_t) * Maxblocksize * iSendrN);
+  memset(Senderbuff, 0, sizeof(uint8_t) * Maxblocksize * iSendrN);
+
+  uint8_t *Receiverbuff = malloc(sizeof(uint8_t) * Maxblocksize * iSendrN * iRecvrM);
+  memset(Receiverbuff, 0, sizeof(uint8_t) * Maxblocksize * iSendrN * iRecvrM);
+
+  int *viINFObits = malloc(sizeof(int) * 75400 * iSendrN);
+  memset(viINFObits, 0, sizeof(int) * 75400 * iSendrN);
 
   int viTB[2] = {100, 50};
   int *viTBs = viTB;
 
+  int CRCs_pool[2] = {0, 0};
+  int *viCRCs_pool = CRCs_pool;
 
-
+  int totalRecvr[2] = {0, 0};
+  int *vitotalRecvr = totalRecvr;
 
   struct OTI_python oti_python[2];
   struct OTI_python *oti = oti_python;
@@ -48,19 +59,19 @@ int main()
     oti_python[i].totalTrans = 0;
   }
 
-  size_t num_packets = 2;
-  size_t packet_size = 2;
-  int iSendrN = 2;
-
   RQ_encodeControl(Senderbuff,
                    viINFObits, viTBs, oti_python,
                    Maxblocksize, num_packets, packet_size, MaxTBs, iSendrN);
 
-  memset(viINFObits, 0, sizeof(int) * 200);
+  RQ_decodePush(viINFObits, Receiverbuff, viCRCs_pool, oti,
+                vitotalRecvr,  iRecvrM,  iSendrN,  MaxTBs,  Maxblocksize);
 
-  RQ_encodeControl(Senderbuff,
-                   viINFObits, viTBs, oti_python,
-                   Maxblocksize, num_packets, packet_size, MaxTBs, iSendrN);
-                   
+   RQ_decodeControl(Receiverbuff,  oti,
+                            totalRecvr,  iRecvrM,  iSendrN,  Maxblocksize);
+
+      RQ_encodeControl(Senderbuff,
+                       viINFObits, viTBs, oti_python,
+                       Maxblocksize, num_packets, packet_size, MaxTBs, iSendrN);
+
   return 0;
 }
