@@ -6,10 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/ward/raptorQ/RaptorQ.c
-RaptorQ.h
-/home/ward/raptorQ/RaptorQ.h
-
 /home/ward/raptorQ/RaptorQ.h
 assert.h
 -
@@ -47,4 +43,8 @@ stdint.h
 -
 io.h
 /home/ward/raptorQ/io.h
+
+/home/ward/raptorQ/temp.c
+RaptorQ.h
+/home/ward/raptorQ/RaptorQ.h
 
