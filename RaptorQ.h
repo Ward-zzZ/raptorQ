@@ -13,20 +13,6 @@ struct sym
   uint8_t *data;
 };
 
-struct OTI_common
-{
-  size_t F;  /* input size in bytes */
-  size_t T;  /* the symbol size in octets, which MUST be a multiple of Al */
-  size_t Al; /* byte alignment, 0 < Al <= 8, 4 is recommended */
-};
-
-struct OTI_scheme
-{
-  size_t Z;  /* number of source blocks */
-  size_t N;  /* number of sub-blocks in each source block */
-  size_t Kt; /* the total number of symbols required to represent input */
-};
-
 struct OTI_python
 {
   uint64_t oti_common;

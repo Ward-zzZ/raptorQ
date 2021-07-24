@@ -330,7 +330,6 @@ void RQ_saveEncoded_data(uint8_t *Senderbuff, nanorq *rq, symvec *packets)
 {
   // int packet_size = nanorq_symbol_size(rq); //单位字节,symbol长度
   int packet_size = nanorq_symbol_size(rq); //单位字节
-  int sum = 0;
   struct sym s;
   uint32_t esi;
   uint8_t *data;
@@ -350,7 +349,7 @@ void RQ_saveEncoded_data(uint8_t *Senderbuff, nanorq *rq, symvec *packets)
     for (int m = 0; m < packet_size; m++)
     {
       *Senderbuff = *data;
-      *Senderbuff++;
+      Senderbuff++;
       data++;
     }
   }
@@ -412,7 +411,8 @@ void RQ_encodeControl(uint8_t *Senderbuff,
       struct ioctx *myio_in;
       oti_python->totalTrans = 0;
       oti_python->srcsymNum = (size_t)num_packets;
-      uint8_t *srcData = RQ_encode_init(&rq, &myio_in, num_packets, packet_size, true);
+      // uint8_t *srcData = RQ_encode_init(&rq, &myio_in, num_packets, packet_size, true);
+      RQ_encode_init(&rq, &myio_in, num_packets, packet_size, true);
       symvec packets;
       kv_init(packets);
       RQ_encodedData(rq, myio_in, &packets, oti_python->overhead);
@@ -638,41 +638,3 @@ int RQ_decode(uint8_t *Receiverbuff, struct OTI_python *oti, int totalRecvr)
   free(out);
   return 0;
 }
-
-// void RQ_pushTB(int *viINFObits, nanorq *rq, symvec *subpackets)
-// {
-//   int packet_size = nanorq_symbol_size(rq); //单位字节
-//   int sum = 0;
-//   for (int i = 0; i < kv_size(*subpackets); i++)
-//   {
-//     struct sym s = kv_A(*subpackets, i);
-//     uint32_t esi = s.tag;
-//     uint8_t *data = s.data;
-//     //esi
-//     for (int j = 31; j >= 0; j--)
-//     {
-//       if (esi & (1 << j))
-//         *viINFObits = 1;
-//       else
-//         *viINFObits = 0;
-//       viINFObits++;
-//       sum++;
-//     }
-//     //source data
-//     for (int m = 0; m < packet_size; m++)
-//     {
-//       uint8_t bytedata = *data;
-//       data++;
-//       for (int n = 7; n >= 0; n--)
-//       {
-//         if (bytedata & (1 << n))
-//           *viINFObits = 1;
-//         else
-//           *viINFObits = 0;
-//         viINFObits++;
-//         sum++;
-//       }
-//     }
-//   }
-//   fprintf(stderr, "总共压入数据 %d比特.\n", sum);
-// }
