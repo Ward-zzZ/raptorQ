@@ -27,13 +27,14 @@ struct OTI_python
 
 typedef kvec_t(struct sym) symvec;
 
+int RQ_pow(int x, int y);
 void random_bytes(uint8_t *buf, uint64_t len);
 uint8_t *RQ_encode_init(nanorq **rq, struct ioctx **myio_in, size_t num_packets, size_t packet_size, bool precalc);
 void RQ_generate_symbols(nanorq *rq, struct ioctx *myio, int sbn, symvec *packets, uint32_t esi);
 uint32_t RQ_receive(nanorq *rq, struct ioctx *myio, int NetTBS, uint32_t esi, symvec *packets);
 int RQ_decode(uint8_t *Receiverbuff, struct OTI_python *oti, int totalRecvr);
 void RQ_buffTosymvec(uint8_t *Receiverbuff, struct OTI_python *oti, symvec *packets, int totalRecvr);
-void RQ_decodePush(int *viINFObits, uint8_t *Receiverbuff, int *viCRCs_pool, struct OTI_python *oti,
+void RQ_decodePush(int *viINFObits, uint8_t *Senderbuff, uint8_t *Receiverbuff, int *viCRCs_pool, struct OTI_python *oti,
                    int *totalRecvr, int iRecvrM, int iSendrN, int MaxTBs, int Maxblocksize);
 void RQ_encodePush(int *viINFObits, uint8_t *Senderbuff, int packet_size, int NetTBS, struct OTI_python *oti);
 void RQ_saveEncoded_data(uint8_t *Senderbuff, nanorq *rq, symvec *packets);
