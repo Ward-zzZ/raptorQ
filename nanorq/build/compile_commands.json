@@ -1,0 +1,77 @@
+[
+{
+  "directory": "/home/ward/nanorq/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9  -I/home/ward/nanorq  -g   -o CMakeFiles/temp.dir/RaptorQ.c.o   -c /home/ward/nanorq/RaptorQ.c",
+  "file": "/home/ward/nanorq/RaptorQ.c"
+},
+{
+  "directory": "/home/ward/nanorq/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9  -I/home/ward/nanorq  -g   -o CMakeFiles/temp.dir/benchmark.c.o   -c /home/ward/nanorq/benchmark.c",
+  "file": "/home/ward/nanorq/benchmark.c"
+},
+{
+  "directory": "/home/ward/nanorq/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9  -I/home/ward/nanorq  -g   -o CMakeFiles/temp.dir/bitmask.c.o   -c /home/ward/nanorq/bitmask.c",
+  "file": "/home/ward/nanorq/bitmask.c"
+},
+{
+  "directory": "/home/ward/nanorq/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9  -I/home/ward/nanorq  -g   -o CMakeFiles/temp.dir/decode.c.o   -c /home/ward/nanorq/decode.c",
+  "file": "/home/ward/nanorq/decode.c"
+},
+{
+  "directory": "/home/ward/nanorq/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9  -I/home/ward/nanorq  -g   -o CMakeFiles/temp.dir/encode.c.o   -c /home/ward/nanorq/encode.c",
+  "file": "/home/ward/nanorq/encode.c"
+},
+{
+  "directory": "/home/ward/nanorq/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9  -I/home/ward/nanorq  -g   -o CMakeFiles/temp.dir/io.c.o   -c /home/ward/nanorq/io.c",
+  "file": "/home/ward/nanorq/io.c"
+},
+{
+  "directory": "/home/ward/nanorq/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9  -I/home/ward/nanorq  -g   -o CMakeFiles/temp.dir/nanorq.c.o   -c /home/ward/nanorq/nanorq.c",
+  "file": "/home/ward/nanorq/nanorq.c"
+},
+{
+  "directory": "/home/ward/nanorq/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9  -I/home/ward/nanorq  -g   -o CMakeFiles/temp.dir/params.c.o   -c /home/ward/nanorq/params.c",
+  "file": "/home/ward/nanorq/params.c"
+},
+{
+  "directory": "/home/ward/nanorq/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9  -I/home/ward/nanorq  -g   -o CMakeFiles/temp.dir/precode.c.o   -c /home/ward/nanorq/precode.c",
+  "file": "/home/ward/nanorq/precode.c"
+},
+{
+  "directory": "/home/ward/nanorq/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9  -I/home/ward/nanorq  -g   -o CMakeFiles/temp.dir/rand.c.o   -c /home/ward/nanorq/rand.c",
+  "file": "/home/ward/nanorq/rand.c"
+},
+{
+  "directory": "/home/ward/nanorq/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9  -I/home/ward/nanorq  -g   -o CMakeFiles/temp.dir/sched.c.o   -c /home/ward/nanorq/sched.c",
+  "file": "/home/ward/nanorq/sched.c"
+},
+{
+  "directory": "/home/ward/nanorq/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9  -I/home/ward/nanorq  -g   -o CMakeFiles/temp.dir/spmat.c.o   -c /home/ward/nanorq/spmat.c",
+  "file": "/home/ward/nanorq/spmat.c"
+},
+{
+  "directory": "/home/ward/nanorq/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9  -I/home/ward/nanorq  -g   -o CMakeFiles/temp.dir/test.c.o   -c /home/ward/nanorq/test.c",
+  "file": "/home/ward/nanorq/test.c"
+},
+{
+  "directory": "/home/ward/nanorq/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9  -I/home/ward/nanorq  -g   -o CMakeFiles/temp.dir/tuple.c.o   -c /home/ward/nanorq/tuple.c",
+  "file": "/home/ward/nanorq/tuple.c"
+},
+{
+  "directory": "/home/ward/nanorq/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9  -I/home/ward/nanorq  -g   -o CMakeFiles/temp.dir/wrkmat.c.o   -c /home/ward/nanorq/wrkmat.c",
+  "file": "/home/ward/nanorq/wrkmat.c"
+}
+]

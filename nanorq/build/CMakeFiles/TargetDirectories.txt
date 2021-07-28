@@ -1,0 +1,3 @@
+/home/ward/nanorq/build/CMakeFiles/rebuild_cache.dir
+/home/ward/nanorq/build/CMakeFiles/edit_cache.dir
+/home/ward/nanorq/build/CMakeFiles/temp.dir
