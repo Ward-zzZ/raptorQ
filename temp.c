@@ -25,10 +25,10 @@ int main()
 {
 
   size_t num_packets = 100;
-  size_t packet_size = 10;
+  size_t packet_size = 50;
   int iSendrN = 2;
   int iRecvrM = 1;
-  unsigned long Maxblocksize = 10000;
+  unsigned long Maxblocksize = 200000;
   int MaxTBs = 75400; //一次最多传bits
   uint64_t SumOKBITS = 0;
 
@@ -44,7 +44,7 @@ int main()
   int viTB[2] = {5352, 5352};
   int *viTBs = viTB;
 
-  int CRCs_pool[4] = {0, 0, 1, 1};
+  int CRCs_pool[4] = {0, 1, 1, 1};
   int *viCRCs_pool = CRCs_pool;
 
   int totalRecvr[4] = {0, 0, 0, 0};
@@ -56,16 +56,16 @@ int main()
   for (int i = 0; i < 2; i++)
   {
     oti_python[i].Endflag = true;
-    oti_python[i].overhead = 3;
+    oti_python[i].overhead = 1.3;
     oti_python[i].totalTrans = 0;
   }
   //103 198 105 115 37 234
   // 81 255 74 236
   for (int i = 0; i < 150; i++)
   {
-    viTB[0]=2000+10*i;
-    viTB[1]=3000-10*i;
-    if (i % 2 == 0)
+    // viTB[0]=2000+10*i;
+    // viTB[1]=3000-10*i;
+    if (i % 9 == 0)
     {
       CRCs_pool[0] = 1;
       CRCs_pool[3] = 1;
